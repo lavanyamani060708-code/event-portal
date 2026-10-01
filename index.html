@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tarang '26 Event Portal</title>
+  <meta name="description" content="Events, schedule, gallery and registration for Tarang '26, the annual inter-college festival of Prathyusha Engineering College.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="brand" href="#home" data-nav>
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="currentColor"/><path d="M5 24 Q12.5 12 20 24 T35 24" fill="none" stroke="var(--on-accent)" stroke-width="3.2" stroke-linecap="round"/><path d="M5 31 Q12.5 21 20 31 T35 31" fill="none" stroke="var(--on-accent)" stroke-width="3.2" stroke-linecap="round" opacity=".55"/></svg>
+        <span class="brand-text"><strong>Tarang '26</strong><small>Prathyusha Engineering College</small></span>
+      </a>
+      <nav id="siteNav" class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="#home" data-nav>Home</a></li>
+          <li><a href="#events" data-nav>Events</a></li>
+          <li><a href="#schedule" data-nav>Schedule</a></li>
+          <li><a href="#gallery" data-nav>Gallery</a></li>
+          <li><a href="#registration" data-nav>Registration</a></li>
+          <li><a href="#contact" data-nav>Contact</a></li>
+        </ul>
+      </nav>
+      <div class="bar-actions">
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch colour theme">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">
+          <span class="bars" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HOME -->
+    <section id="home" class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Inter-college festival · 12 to 14 November 2026</p>
+          <h1 id="hero-title">Tarang<span class="yr">'26</span></h1>
+          <p class="lede">Three days of code, music, movement and matches across ten events. Choose what you want to take part in, register in a minute and bring your team.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#registration" data-nav>Register now</a>
+            <a class="btn btn-ghost" href="#events" data-nav>Browse events</a>
+          </div>
+        </div>
+        <div class="countdown" role="timer" aria-label="Time until the festival opens">
+          <p class="cd-label">Gates open in</p>
+          <div class="cd-grid">
+            <div><b id="cdDays">00</b><span>days</span></div>
+            <div><b id="cdHours">00</b><span>hours</span></div>
+            <div><b id="cdMins">00</b><span>mins</span></div>
+            <div><b id="cdSecs">00</b><span>secs</span></div>
+          </div>
+          <p class="cd-foot">Inauguration at 9:00 AM, Main Auditorium</p>
+        </div>
+      </div>
+      <div class="waves" aria-hidden="true">
+        <svg class="wave w1" viewBox="0 0 2400 140" preserveAspectRatio="none"><path d="M0,70 Q300,10 600,70 T1200,70 T1800,70 T2400,70 V140 H0Z"/></svg>
+        <svg class="wave w2" viewBox="0 0 2400 140" preserveAspectRatio="none"><path d="M0,70 Q300,10 600,70 T1200,70 T1800,70 T2400,70 V140 H0Z"/></svg>
+        <svg class="wave w3" viewBox="0 0 2400 140" preserveAspectRatio="none"><path d="M0,70 Q300,10 600,70 T1200,70 T1800,70 T2400,70 V140 H0Z"/></svg>
+      </div>
+    </section>
+
+    <section class="home-extra" aria-label="Highlights and announcements">
+      <div class="wrap home-grid">
+        <div>
+          <div class="sec-head">
+            <div>
+              <p class="eyebrow">Event highlights</p>
+              <h2>Where the crowds will be</h2>
+            </div>
+          </div>
+          <ul class="featured" id="featuredList"></ul>
+        </div>
+
+        <aside aria-labelledby="ann-title">
+          <div class="sec-head">
+            <div>
+              <p class="eyebrow">Notice board</p>
+              <h2 id="ann-title">Latest announcements</h2>
+            </div>
+          </div>
+          <ul class="announcements" id="annList" aria-live="polite"></ul>
+
+          <details class="organiser">
+            <summary>Organiser tools</summary>
+            <div class="org-body">
+              <form id="annForm" novalidate>
+                <h3>Post an announcement</h3>
+                <div class="field">
+                  <label for="a-title">Headline</label>
+                  <input id="a-title" name="title" type="text" maxlength="80">
+                  <p class="err" id="err-a-title" aria-live="polite"></p>
+                </div>
+                <div class="field">
+                  <label for="a-text">Details</label>
+                  <textarea id="a-text" name="text" rows="3" maxlength="240"></textarea>
+                  <p class="err" id="err-a-text" aria-live="polite"></p>
+                </div>
+                <button class="btn btn-primary btn-sm" type="submit">Publish notice</button>
+              </form>
+
+              <form id="evUpdateForm" novalidate>
+                <h3>Change an event's venue or start time</h3>
+                <div class="field">
+                  <label for="u-event">Event</label>
+                  <select id="u-event" name="event"></select>
+                </div>
+                <div class="field">
+                  <label for="u-venue">New venue</label>
+                  <input id="u-venue" name="venue" type="text" maxlength="60">
+                  <p class="err" id="err-u-venue" aria-live="polite"></p>
+                </div>
+                <div class="field">
+                  <label for="u-start">New start time</label>
+                  <input id="u-start" name="start" type="time">
+                  <p class="err" id="err-u-start" aria-live="polite"></p>
+                </div>
+                <button class="btn btn-primary btn-sm" type="submit">Update event</button>
+              </form>
+            </div>
+          </details>
+        </aside>
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section id="events" class="block" aria-labelledby="events-title">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <p class="eyebrow">Event listings</p>
+            <h2 id="events-title">Ten events, three days</h2>
+          </div>
+          <p class="sec-note">Pick a category or a day to narrow the list. Seats are limited.</p>
+        </div>
+
+        <div class="filters">
+          <div class="chips" id="catChips" role="group" aria-label="Filter by category"></div>
+          <div class="field day-filter">
+            <label for="dayFilter">Day</label>
+            <select id="dayFilter"></select>
+          </div>
+        </div>
+        <p class="result-count" id="resultCount" aria-live="polite"></p>
+        <div class="event-grid" id="eventGrid"></div>
+      </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section id="schedule" class="block alt" aria-labelledby="schedule-title">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <p class="eyebrow">Programme</p>
+            <h2 id="schedule-title">Day-by-day schedule</h2>
+          </div>
+          <p class="sec-note">Times are local. Any change made by the organisers appears here instantly.</p>
+        </div>
+        <div class="tabs" id="dayTabs" role="tablist" aria-label="Festival days"></div>
+        <div class="table-wrap" id="schedulePanel" role="tabpanel">
+          <table class="schedule">
+            <caption class="sr" id="scheduleCaption">Schedule</caption>
+            <thead>
+              <tr><th scope="col">Time</th><th scope="col">Event</th><th scope="col">Venue</th><th scope="col">Type</th></tr>
+            </thead>
+            <tbody id="scheduleBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="block" aria-labelledby="gallery-title">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <p class="eyebrow">Gallery</p>
+            <h2 id="gallery-title">Moments from Tarang '25</h2>
+          </div>
+          <p class="sec-note">Illustrations stand in for photographs. Select a tile to view it larger.</p>
+        </div>
+        <div class="gallery" id="galleryGrid"></div>
+      </div>
+    </section>
+
+    <!-- REGISTRATION -->
+    <section id="registration" class="block alt" aria-labelledby="reg-title">
+      <div class="wrap reg-grid">
+        <div>
+          <div class="sec-head">
+            <div>
+              <p class="eyebrow">Registration</p>
+              <h2 id="reg-title">Reserve your seat</h2>
+            </div>
+          </div>
+
+          <div id="regSuccess" class="success" role="status" tabindex="-1" hidden></div>
+
+          <form id="regForm" class="form card" novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label for="r-name">Full name</label>
+                <input id="r-name" name="name" type="text" autocomplete="name" maxlength="60" required>
+                <p class="err" id="err-r-name" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="r-email">College email</label>
+                <input id="r-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+                <p class="err" id="err-r-email" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="r-mobile">Mobile number</label>
+                <input id="r-mobile" name="mobile" type="tel" autocomplete="tel-national" inputmode="numeric" maxlength="10" placeholder="10 digits" required>
+                <p class="err" id="err-r-mobile" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="r-dept">Department</label>
+                <select id="r-dept" name="dept" required>
+                  <option value="">Select department</option>
+                  <option>Computer Science</option>
+                  <option>Information Technology</option>
+                  <option>AI &amp; Data Science</option>
+                  <option>Electronics &amp; Communication</option>
+                  <option>Electrical &amp; Electronics</option>
+                  <option>Mechanical</option>
+                  <option>Civil</option>
+                  <option>Management Studies</option>
+                  <option>Other</option>
+                </select>
+                <p class="err" id="err-r-dept" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="r-year">Year of study</label>
+                <select id="r-year" name="year" required>
+                  <option value="">Select year</option>
+                  <option>I year</option>
+                  <option>II year</option>
+                  <option>III year</option>
+                  <option>IV year</option>
+                  <option>Postgraduate</option>
+                </select>
+                <p class="err" id="err-r-year" aria-live="polite"></p>
+              </div>
+              <div class="field span-2">
+                <label for="r-event">Event</label>
+                <select id="r-event" name="event" required></select>
+                <p class="err" id="err-r-event" aria-live="polite"></p>
+              </div>
+            </div>
+
+            <div class="field check">
+              <input id="r-terms" name="terms" type="checkbox">
+              <label for="r-terms">I will carry my college ID card to every event I register for.</label>
+            </div>
+            <p class="err" id="err-r-terms" aria-live="polite"></p>
+
+            <p class="form-error" id="regSummary" hidden></p>
+
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit">Complete registration</button>
+              <button class="btn btn-quiet" type="reset" id="regReset">Clear form</button>
+            </div>
+            <p class="note">This demo keeps registrations in your browser only. Connect a backend or a form service to collect them in one place.</p>
+          </form>
+        </div>
+
+        <aside class="reg-side" aria-labelledby="mine-title">
+          <div class="card">
+            <h3 id="mine-title">Your registrations</h3>
+            <ul class="mine" id="myRegs"></ul>
+          </div>
+          <div class="card">
+            <h3>Before you register</h3>
+            <ul class="plain">
+              <li>Each person can register for several events, once per event.</li>
+              <li>Team events need one registration per member.</li>
+              <li>Seat counts update as soon as you submit.</li>
+              <li>Registration closes on 5 November 2026.</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="block" aria-labelledby="contact-title">
+      <div class="wrap contact-grid">
+        <div>
+          <div class="sec-head">
+            <div>
+              <p class="eyebrow">Contact</p>
+              <h2 id="contact-title">Talk to the festival desk</h2>
+            </div>
+          </div>
+          <dl class="contact-list">
+            <div><dt>Festival office</dt><dd>Student Activities Centre, Prathyusha Engineering College, Main Campus</dd></div>
+            <div><dt>Email</dt><dd>tarang@prathyusha.example</dd></div>
+            <div><dt>Phone</dt><dd>+91 90000 00000</dd></div>
+            <div><dt>Desk hours</dt><dd>Monday to Friday, 10:00 AM to 4:30 PM<br>Festival days, 8:00 AM to 8:00 PM</dd></div>
+          </dl>
+        </div>
+
+        <div>
+          <div id="contactSuccess" class="success" role="status" tabindex="-1" hidden></div>
+          <form id="contactForm" class="form card" novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label for="c-name">Your name</label>
+                <input id="c-name" name="name" type="text" autocomplete="name" maxlength="60" required>
+                <p class="err" id="err-c-name" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="c-email">Email</label>
+                <input id="c-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+                <p class="err" id="err-c-email" aria-live="polite"></p>
+              </div>
+              <div class="field span-2">
+                <label for="c-topic">Topic</label>
+                <select id="c-topic" name="topic" required>
+                  <option value="">Choose a topic</option>
+                  <option>Registration help</option>
+                  <option>Sponsorship</option>
+                  <option>Volunteering</option>
+                  <option>Accommodation and travel</option>
+                  <option>Something else</option>
+                </select>
+                <p class="err" id="err-c-topic" aria-live="polite"></p>
+              </div>
+              <div class="field span-2">
+                <label for="c-message">Message</label>
+                <textarea id="c-message" name="message" rows="5" maxlength="500" required></textarea>
+                <p class="err" id="err-c-message" aria-live="polite"></p>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit">Send message</button>
+            </div>
+            <p class="note">This demo does not send email. Add a form service or backend to deliver messages.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap foot-grid">
+      <div>
+        <p class="foot-brand">Tarang '26</p>
+        <p>Annual inter-college festival of Prathyusha Engineering College. Twelve to fourteen November 2026.</p>
+      </div>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="#events" data-nav>Events</a></li>
+          <li><a href="#schedule" data-nav>Schedule</a></li>
+          <li><a href="#gallery" data-nav>Gallery</a></li>
+          <li><a href="#registration" data-nav>Registration</a></li>
+          <li><a href="#contact" data-nav>Contact</a></li>
+        </ul>
+      </nav>
+      <p class="copy">© 2026 Prathyusha Engineering College. Built as a front-end mini project with HTML5, CSS3 and JavaScript.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
